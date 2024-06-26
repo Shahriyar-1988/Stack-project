@@ -87,9 +87,22 @@ ok = st.button('Calculate salary')
 
 columns = ['YearsCodePro', 'DevType', 'Country', 'EdLevel', 'Industry']
 
+#if ok:
+  #  X_new = np.array([years_code, Dev_tp, country, Ed_tp, Ind_tp])
+   # X_new_df = pd.DataFrame([X_new], columns=columns)
+   # salary = model.predict(X_new_df)
+    
+   # st.subheader(f"The estimated salary is ${salary[0]:.2f}")
 if ok:
     X_new = np.array([years_code, Dev_tp, country, Ed_tp, Ind_tp])
     X_new_df = pd.DataFrame([X_new], columns=columns)
-    salary = model.predict(X_new_df)
     
-    st.subheader(f"The estimated salary is ${salary[0]:.2f}")
+    # Debugging statements
+    st.write("Input DataFrame:")
+    st.write(X_new_df)
+    
+    try:
+        salary = model.predict(X_new_df)
+        st.subheader(f"The estimated salary is ${salary[0]:.2f}")
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
