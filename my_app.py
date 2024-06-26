@@ -94,7 +94,7 @@ columns = ['YearsCodePro', 'DevType', 'Country', 'EdLevel', 'Industry']
     
    # st.subheader(f"The estimated salary is ${salary[0]:.2f}")
 if ok:
-    X_new = np.array([years_code, Dev_tp, country, Ed_tp, Ind_tp])
+    X_new = np.array([int(years_code), Dev_tp, country, Ed_tp, Ind_tp])
     X_new_df = pd.DataFrame([X_new], columns=columns)
     
     # Debugging statements
