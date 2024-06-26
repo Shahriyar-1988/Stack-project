@@ -4,7 +4,7 @@ import pandas as pd
 import joblib
 
 model = joblib.load("xgbmodel.joblib")
-st.title('Salary Prediction in 2022')
+st.title('Salary Prediction in 2023')
 st.write("### We need some information to predict the salary")
 
 countries = [
