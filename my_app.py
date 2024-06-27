@@ -71,15 +71,15 @@ columns = ['YearsCodePro', 'DevType', 'Country', 'EdLevel', 'Industry']
 #    st.subheader(f"The estimated salary is ${salary[0]:.2f}")
 if ok:
     X_new = np.array([years_code, Dev_tp, country, Ed_tp, Ind_tp])
-    # X_new_df = pd.DataFrame([X_new], columns=columns)
+    X_new_df = pd.DataFrame([X_new], columns=columns)
     # X_new_df['YearsCodePro'] = X_new_df['YearsCodePro'].astype(float)
-    # st.write("Input DataFrame:")
-    # st.write(X_new_df)
-    # st.write("DataFrame dtypes:")
-    # st.write(X_new_df.dtypes)
+    st.write("Input DataFrame:")
+    st.write(X_new_df)
+    st.write("DataFrame dtypes:")
+    st.write(X_new_df.dtypes)
     
     try:
-        salary = model.predict(X_new)
+        salary = model.predict(X_new_df)
         st.subheader(f"The estimated salary is ${salary[0]:.2f}")
     except Exception as e:
         st.error(f"An error occurred: {e}")
