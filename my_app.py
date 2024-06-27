@@ -5,7 +5,7 @@ import sklearn
 import joblib
 
 model = joblib.load("xgbmodel.joblib")
-st.title('Salary Prediction in 2023')
+st.title('Developers Salary Prediction in 2023')
 st.write("### We need some information to predict the salary")
 
 countries = ['Other', 'United Kingdom of Great Britain and Northern Ireland',
