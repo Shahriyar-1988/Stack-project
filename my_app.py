@@ -70,7 +70,7 @@ columns = ['YearsCodePro', 'DevType', 'Country', 'EdLevel', 'Industry']
 #    st.subheader(f"The estimated salary is ${salary[0]:.2f}")
 if ok:
     X_new = np.array([years_code, Dev_tp, country, Ed_tp, Ind_tp],dtype=object)
-    x_new[0]=np.float32(years_code)
+    X_new[0]=np.float32(years_code)
     X_new_df = pd.DataFrame([X_new], columns=columns)
     
     try:
