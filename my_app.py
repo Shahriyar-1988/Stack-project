@@ -78,8 +78,18 @@ if ok:
     st.write("DataFrame dtypes:")
     st.write(X_new_df.dtypes)
     
+    # try:
+    #     salary = model.predict(X_new_df)
+    #     st.subheader(f"The estimated salary is ${salary[0]:.2f}")
+    # except Exception as e:
+    #     st.error(f"An error occurred: {e}")
     try:
+        # Check if the model includes a column transformer or similar preprocessing step
+        if hasattr(model, 'named_steps') and 'preprocessor' in model.named_steps:
+            st.write("Model has preprocessing steps.")
+        
         salary = model.predict(X_new_df)
         st.subheader(f"The estimated salary is ${salary[0]:.2f}")
     except Exception as e:
         st.error(f"An error occurred: {e}")
+        st.write(e)  # This 
