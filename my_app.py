@@ -73,6 +73,10 @@ if ok:
     X_new = np.array([years_code, Dev_tp, country, Ed_tp, Ind_tp],dtype=object)
     X_new[0]=np.float32(years_code)
     X_new_df = pd.DataFrame([X_new], columns=columns)
+    st.write("Input DataFrame:")
+    st.write(X_new_df)
+    st.write("DataFrame dtypes:")
+    st.write(X_new_df.dtypes)
     
     try:
         salary = model.predict(X_new_df)
