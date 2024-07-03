@@ -3,6 +3,10 @@ import numpy as np
 import pandas as pd
 import sklearn
 import joblib
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer, make_column_selector
+from sklearn.preprocessing import OneHotEncoder
+from xgboost import XGBRegressor
 
 model = joblib.load("xgbmodel.joblib")
 st.title('Developers Salary Prediction in 2023')
@@ -72,7 +76,7 @@ columns = ['YearsCodePro', 'DevType', 'Country', 'EdLevel', 'Industry']
 if ok:
     X_new = np.array([years_code, Dev_tp, country, Ed_tp, Ind_tp])
     X_new_df = pd.DataFrame([X_new], columns=columns)
-    X_new_df['YearsCodePro'] = X_new_df['YearsCodePro'].astype(float)
+    X_new_df['YearsCodePro'] = X_new_df['YearsCodePro'].astype('float64')
     st.write("Input DataFrame:")
     st.write(X_new_df)
     st.write("DataFrame dtypes:")
