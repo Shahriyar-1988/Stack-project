@@ -3,10 +3,6 @@ import numpy as np
 import pandas as pd
 import sklearn
 import joblib
-from sklearn.pipeline import Pipeline
-from sklearn.compose import ColumnTransformer, make_column_selector
-from sklearn.preprocessing import OneHotEncoder
-from xgboost import XGBRegressor
 
 model = joblib.load("xgbmodel.joblib")
 st.title('Developers Salary Prediction in 2023')
@@ -74,16 +70,22 @@ columns = ['YearsCodePro', 'DevType', 'Country', 'EdLevel', 'Industry']
     
 #    st.subheader(f"The estimated salary is ${salary[0]:.2f}")
 if ok:
-    X_new = np.array([years_code, Dev_tp, country, Ed_tp, Ind_tp])
-    X_new_df = pd.DataFrame([X_new], columns=columns)
-    X_new_df['YearsCodePro'] = X_new_df['YearsCodePro'].astype('float64')
-    st.write("Input DataFrame:")
-    st.write(X_new_df)
-    st.write("DataFrame dtypes:")
-    st.write(X_new_df.dtypes)
-    
     try:
-        salary = model.predict(X_new_df)
+        # Prepare input as a DataFrame
+        X_new = pd.DataFrame({
+            'YearsCodePro': [years_code],
+            'DevType': [Dev_tp],
+            'Country': [country],
+            'EdLevel': [Ed_tp],
+            'Industry': [Ind_tp]
+        })
+
+        # Ensure columns are in correct data types
+        X_new['YearsCodePro'] = X_new['YearsCodePro'].astype('float64')
+
+        # Make prediction using the pipeline
+        salary = model.predict(X_new)
         st.subheader(f"The estimated salary is ${salary[0]:.2f}")
+
     except Exception as e:
         st.error(f"An error occurred: {e}")
