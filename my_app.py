@@ -72,7 +72,7 @@ columns = ['YearsCodePro', 'DevType', 'Country', 'EdLevel', 'Industry']
 if ok:
     X_new = np.array([years_code, Dev_tp, country, Ed_tp, Ind_tp])
     X_new_df = pd.DataFrame([X_new], columns=columns)
-    # X_new_df['YearsCodePro'] = X_new_df['YearsCodePro'].astype(float)
+    X_new_df['YearsCodePro'] = X_new_df['YearsCodePro'].astype(float)
     st.write("Input DataFrame:")
     st.write(X_new_df)
     st.write("DataFrame dtypes:")
